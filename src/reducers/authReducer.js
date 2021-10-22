@@ -10,7 +10,7 @@ export const authReducer = (state = {}, action) => {
             };
         }
         case types.authLogout: {
-            return null;
+            return {};
         }
         case types.authError: {
             return { ...state, msnerror: action.payload};

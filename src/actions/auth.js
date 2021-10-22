@@ -1,13 +1,16 @@
-import React from 'react'
 import { types } from '../types/types';
 
 export const authAsync = (username, password) => {
     return (dispatch) => {
         setTimeout(() => {
             if (username === "Pepito" && password === "1234") {
-                dispatch(
-                    auth({id: new Date().getTime(), displayName: username, photo: ""})
-                );
+                const userData = {
+                    id: new Date().getTime(), 
+                    displayName: username, 
+                    photo: ""
+                };
+                localStorage.setItem("user", JSON.stringify(userData));
+                dispatch(auth(userData));
             } else {
                 dispatch(error("Credenciales incorrectas"));
             }
@@ -15,10 +18,26 @@ export const authAsync = (username, password) => {
     };
 };
 
+export const authLogoutAsync = () => {
+    return (dispatch) => {
+        setTimeout(() => {
+            localStorage.removeItem("user");
+            dispatch(logout());
+        }, 1000);
+    }
+};
+
 export const auth = (user) => {
     return {
         type: types.authLogin,
         payload: user
+    };
+};
+
+export const logout = () => {
+    return {
+        type: types.authLogout,
+        payload: null,
     };
 };
 

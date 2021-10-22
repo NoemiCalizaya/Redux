@@ -8,7 +8,10 @@ import {
 import { LoginComponent } from '../auth/LoginComponent';
 import { RegisterComponent } from '../auth/RegisterComponent';
 import { DashBoardComponent } from '../dashboard/DashBoardComponent';
+import { MainDashBoard } from '../dashboard/MainDashBoard';
 import "../../styles/styles.css"
+
+
 
 export const RouterApp = () => {
     return (
@@ -16,6 +19,7 @@ export const RouterApp = () => {
             <Switch>
                 <Route exact path="/login" component={LoginComponent}/>
                 <Route exact path="/register" component={RegisterComponent}/>
+                <Route path="/main" component={MainDashBoard}/>
                 <Route path="/" component={DashBoardComponent}/>
             </Switch>
         </Router>
